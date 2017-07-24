@@ -1,0 +1,69 @@
+\documentclass[
+	 $if(article-type)$
+	 $article-type$
+	 $else$
+	 journal
+	 $endif$
+	,article,submit,moreauthors,pdftex,10pt,a4paper]{mdpi} 
+
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother 
+\articlenumber{x}
+\doinum{10.3390/------}
+\pubvolume{xx}
+\pubyear{2016}
+\copyrightyear{2016}
+\externaleditor{Academic Editor: $if(editor-name)$$editor-name$$else$name$endif$}
+\history{Received: date; Accepted: date; Published: date}
+
+\theoremstyle{mdpi}
+\newcounter{thm}
+\setcounter{thm}{0}
+\newcounter{ex}
+\setcounter{ex}{0}
+\newcounter{re}
+\setcounter{re}{0}
+
+\theoremstyle{mdpidefinition}
+
+
+\Title{$if(title)$$title$$else$Title$endif$}
+
+\Author{$for(author)$$author.name$$if(author.institute)$$$^{$author.institute.index$$if(author.correspondence.address)$\dagger$endif$$if(author.equal-contribution)$,\ddagger$endif$}$$$if(author.correspondence)$*$endif$$endif$$sep$, $endfor$}
+
+\AuthorNames{
+	$for(author)$$author.name$$sep$,$endfor$
+}
+
+\address{
+	$for(author)$
+	$if(author.institute)$$$^{$author.institute.index$}\quad $author.institute.affiliation$; $author.email$$$$endif$$sep$\\
+	$endfor$
+}
+
+$for(author)$
+$if(author.correspondence)$
+\corres{Correspondence: $author.correspondence.email$; Tel.: $author.correspondence.phone$}
+$if(author.correspondence.address)$
+\firstnote{Current address: $author.correspondence.address$} 
+$endif$
+$if(author.equal-contribution)$
+\secondnote{These authors contributed equally to this work.}
+$endif$
+$endif$
+$endfor$
+
+$if(abstract)$
+\abstract{$abstract$}
+$endif$
+
+$if(keywords)$
+\keyword{$for(keywords)$$keywords$$sep$, $endfor$}
+$endif$
+
+\begin{document}
+Participants: $for(author)$$author$$sep$, $endfor$
+$body$
+\end{document}
