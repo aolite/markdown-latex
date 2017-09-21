@@ -1,3 +1,4 @@
+\def\tightlist{} % This is for avoiding tighlist errors in pandoc
 \documentclass[
 	 $if(article-type)$
 	 $article-type$
@@ -5,6 +6,19 @@
 	 journal
 	 $endif$
 	,article,submit,moreauthors,pdftex,10pt,a4paper]{mdpi} 
+
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{pdflscape}
+\usepackage{letltxmacro}
+\LetLtxMacro{\oldhypertarget}{\hypertarget}
+\renewcommand{\hypertarget}[2]{\leavevmode\oldhypertarget{#1}{#2}}
+
+\DeclareUnicodeCharacter{200B}{ }
+\DeclareUnicodeCharacter{00A0}{ }
 
 \firstpage{1} 
 \makeatletter 
@@ -64,6 +78,5 @@ $if(keywords)$
 $endif$
 
 \begin{document}
-Participants: $for(author)$$author$$sep$, $endfor$
 $body$
 \end{document}
